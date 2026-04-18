@@ -26,22 +26,48 @@ if (code && code.toUpperCase() === allowedCode) {
   showSection(blockedSection);
 }
 
-confirmButton.addEventListener('click', function () {
+async function handleResponse(accept) {
   const nome = nomeInput.value.trim();
   const sobrenome = sobrenomeInput.value.trim();
+
   if (!nome || !sobrenome) {
-    showMessage('Por favor, informe nome e sobrenome antes de confirmar.');
+    showMessage('Por favor, informe nome e sobrenome antes de enviar sua resposta.');
     return;
   }
-  showMessage(`Obrigado, ${nome} ${sobrenome}! Sua presença foi confirmada. 🥂`);
+
+  if (typeof saveGuestResponse !== 'function') {
+    showMessage('Erro de configuração: o Supabase não está inicializado.');
+    return;
+  }
+
+  confirmButton.disabled = true;
+  declineButton.disabled = true;
+  successMessage.classList.add('hidden');
+
+  try {
+    await saveGuestResponse({
+      first_name: nome,
+      last_name: sobrenome,
+      accept,
+    });
+
+    const message = accept
+      ? `Obrigado, ${nome} ${sobrenome}! Sua presença foi confirmada. 🥂`
+      : `Obrigado pelo retorno, ${nome} ${sobrenome}. Lamentamos sua ausência.`;
+
+    showMessage(message);
+  } catch (error) {
+    showMessage(`Erro ao salvar resposta: ${error.message || error}`);
+  } finally {
+    confirmButton.disabled = false;
+    declineButton.disabled = false;
+  }
+}
+
+confirmButton.addEventListener('click', function () {
+  handleResponse(true);
 });
 
 declineButton.addEventListener('click', function () {
-  const nome = nomeInput.value.trim();
-  const sobrenome = sobrenomeInput.value.trim();
-  if (!nome || !sobrenome) {
-    showMessage('Por favor, informe nome e sobrenome antes de enviar a não confirmação.');
-    return;
-  }
-  showMessage(`Obrigado pelo retorno, ${nome} ${sobrenome}. Lamentamos sua ausência.`);
+  handleResponse(false);
 });
