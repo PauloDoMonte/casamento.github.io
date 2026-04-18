@@ -45,10 +45,29 @@ p {
   line-height: 1.7;
 }
 
-form {
+.confirm-panel {
+  margin-top: 24px;
+}
+
+.input-row {
   display: grid;
   gap: 18px;
-  margin-top: 24px;
+  margin-bottom: 22px;
+}
+
+.input-item {
+  display: grid;
+  gap: 8px;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+button {
+  flex: 1 1 150px;
 }
 
 label {
@@ -77,9 +96,17 @@ button {
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
+button.secondary {
+  background: #7d7d7d;
+}
+
 button:hover {
   transform: translateY(-1px);
   background: #a76a5a;
+}
+
+button.secondary:hover {
+  background: #5f5f5f;
 }
 
 .success {
