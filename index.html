@@ -4,38 +4,45 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Confirmação de Presença</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/style.css" />
 </head>
 <body>
+  <div class="decorative-bg"></div>
   <main class="container">
     <section id="blocked" class="card hidden">
-      <h1>Acesso inválido</h1>
-      <p>Você precisa acessar este site pelo link de confirmação com o código correto.</p>
-      <p>Exemplo: <strong>?code=HT854S</strong></p>
+      <div class="icon">🔒</div>
+      <h1>Acesso Restrito</h1>
+      <p class="subtitle">Você precisa acessar este site pelo link de confirmação com o código correto.</p>
+      <p class="example">Exemplo: <strong>?code=HT854S</strong></p>
     </section>
 
     <section id="confirm" class="card hidden">
+      <div class="decorative-line"></div>
       <h1>Confirme sua Presença</h1>
-      <p>Obrigado por confirmar sua presença no nosso casamento.</p>
+      <p class="subtitle">Será uma honra contar com sua presença em nosso grande dia.</p>
       <div id="confirm-panel" class="confirm-panel">
         <div class="input-row">
           <div class="input-item">
             <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome" placeholder="Seu nome" />
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" />
           </div>
           <div class="input-item">
             <label for="sobrenome">Sobrenome</label>
-            <input type="text" id="sobrenome" name="sobrenome" placeholder="Seu sobrenome" />
+            <input type="text" id="sobrenome" name="sobrenome" placeholder="Digite seu sobrenome" />
           </div>
         </div>
 
         <div class="button-group">
-          <button id="confirm-button" type="button">Confirmo</button>
-          <button id="decline-button" type="button" class="secondary">Não Confirmo</button>
+          <button id="confirm-button" type="button" class="btn-primary">✓ Confirmo Presença</button>
+          <button id="decline-button" type="button" class="btn-secondary">✕ Não Poderei Ir</button>
         </div>
       </div>
 
       <div id="success-message" class="success hidden"></div>
+      <div class="decorative-line bottom"></div>
     </section>
   </main>
   <script src="static/js/script.js"></script>
