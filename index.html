@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confirmação de Presença</title>
+  <link rel="stylesheet" href="static/css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <section id="blocked" class="card hidden">
+      <h1>Acesso inválido</h1>
+      <p>Você precisa acessar este site pelo link de confirmação com o código correto.</p>
+      <p>Exemplo: <strong>?code=HT854S</strong></p>
+    </section>
+
+    <section id="confirm" class="card hidden">
+      <h1>Confirme sua Presença</h1>
+      <p>Obrigado por confirmar sua presença no nosso casamento.</p>
+      <form id="rsvp-form">
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" name="nome" required />
+
+        <label for="quantidade">Quantidade de convidados</label>
+        <input type="number" id="quantidade" name="quantidade" min="1" max="10" required />
+
+        <label for="mensagem">Mensagem (opcional)</label>
+        <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+
+        <button type="submit">Enviar confirmação</button>
+      </form>
+      <div id="success-message" class="success hidden">
+        <p>Confirmação recebida! 🥂</p>
+      </div>
+    </section>
+  </main>
+  <script src="static/js/script.js"></script>
+</body>
+</html>
